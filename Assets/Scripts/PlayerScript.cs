@@ -7,6 +7,9 @@ public class PlayerScript : MonoBehaviour
     // variables 
     [SerializeField] private Rigidbody RB;
     [SerializeField] private float _speed = 5f;
+    
+    
+    bool collided = true;
 
     // Start is called before the first frame update
     void Start()
@@ -19,30 +22,32 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         
+        
+
         // MOVEMENT
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        
 
-        // horizontal
-        
-        if (Input.GetKeyDown("space"))
+        // if the space bar is pressed the player should stop
+        if (Input.GetKeyDown(KeyCode.Space) && collided) {
             RB.velocity = Vector3.zero;
-        
-        if(horizontalInput < 0 && RB.velocity.x >= 0 ||
-            horizontalInput > 0 && RB.velocity.x <= 0)
-            RB.velocity = Vector3.zero;
-
-        RB.AddForce(Vector3.right * horizontalInput * _speed, ForceMode.Impulse );
-
-        if(verticalInput < 0 && RB.velocity.x >= 0 ||
-            verticalInput > 0 && RB.velocity.x <= 0)
-            RB.velocity = Vector3.zero;
-
-        RB.AddForce(Vector3.up * verticalInput * _speed, ForceMode.Impulse );
-        
-        RB.velocity = (RB.velocity.magnitude == 0 ? 
+            collided = false;
+        }
+                
+        // if the spacebar is released the player will move
+        if (Input.GetKeyUp(KeyCode.Space)){
+            RB.AddForce(Vector3.right * horizontalInput * _speed, ForceMode.Impulse);
+            RB.AddForce(Vector3.up * verticalInput * _speed, ForceMode.Impulse);
+            
+        } else {
+            RB.velocity = (RB.velocity.magnitude == 0 ? 
                         Vector3.zero : RB.velocity.normalized) * _speed;
+        }
         
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        collided = true;
     }
 }
