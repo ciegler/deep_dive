@@ -21,8 +21,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
 
         // MOVEMENT
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -50,4 +48,5 @@ public class PlayerScript : MonoBehaviour
     {
         collided = true;
     }
+    
 }

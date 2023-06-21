@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Scripts/PlayerScript.cs" />
+     <Compile Include="Assets/Scripts/TrapWallScript.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/carolina/Unity/Unity-2021.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
