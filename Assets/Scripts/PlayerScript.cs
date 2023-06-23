@@ -9,44 +9,70 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     
     
-    bool collided = true;
+    bool _collided = true;
+    private Vector3 _startPosition = new Vector3(0f, 0f, 0f);
 
     // Start is called before the first frame update
     void Start()
     {
         // START POSITION
-        transform.position = new Vector3(0f,0f,0f);
+        transform.position = _startPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerMovement();
+        
+        
+    }
 
-        // MOVEMENT
+    private void OnCollisionEnter(Collision collision)
+    {
+        _collided = true;
+        
+    }
+
+    private void PlayerMovement()
+    {
+        // variables for movement
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
         // if the space bar is pressed the player should stop
-        if (Input.GetKeyDown(KeyCode.Space) && collided) {
+        // this is only possible after colliding with a wall
+        if (Input.GetKeyDown(KeyCode.Space) && _collided) {
             RB.velocity = Vector3.zero;
-            collided = false;
+            _collided = false;
         }
                 
-        // if the spacebar is released the player will move
+        // if the space bar is released the player will move
         if (Input.GetKeyUp(KeyCode.Space)){
             RB.AddForce(Vector3.right * horizontalInput * _speed, ForceMode.Impulse);
             RB.AddForce(Vector3.up * verticalInput * _speed, ForceMode.Impulse);
             
         } else {
             RB.velocity = (RB.velocity.magnitude == 0 ? 
-                        Vector3.zero : RB.velocity.normalized) * _speed;
+                Vector3.zero : RB.velocity.normalized) * _speed;
         }
-        
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void PlayerDeath()
     {
-        collided = true;
+        Debug.Log("Death");
+        // transport back to start position
+        transform.position = _startPosition;
+        
+        // set movement to 0
+        RB.velocity = Vector3.zero;
+        
+        // display some text ...
     }
     
+    /*
+    public void PlayerTeleportation(otherPortal)
+    {
+        
+    }
+    */
 }
