@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -19,6 +20,9 @@ public class PlayerScript : MonoBehaviour
     private float _coolDownTeleport = 1f;
     private float _nextTeleportTime = 0.5f;
     
+    // list of collected items
+    private List<GameObject> _collectedItems = new List<GameObject>();
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +67,8 @@ public class PlayerScript : MonoBehaviour
             RB.velocity = (RB.velocity.magnitude == 0 ? 
                 Vector3.zero : RB.velocity.normalized) * _speed;
         }
+        
+        // TODO change color when collided 
     }
 
     public void PlayerDeath()
@@ -87,9 +93,19 @@ public class PlayerScript : MonoBehaviour
         }
         
     }
+
+    public void CollectItem(GameObject item)
+    {
+        _collectedItems.Add(item);
+        Debug.Log(_collectedItems[0].tag);
+    }
+
+    private void TurnOnFlashlight()
+    {
+        // in der liste nach flashligh suchen
+        
+    }
     
-    
-    // TODO: collect items to collect a flashlight
     // TODO : activate flashlight if item is in possession 
     
 }

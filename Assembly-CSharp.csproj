@@ -48,8 +48,10 @@
      <Compile Include="Assets/Scripts/PlayerScript.cs" />
      <Compile Include="Assets/Scripts/EnemyScripts/HorizontalEnemyScript.cs" />
      <Compile Include="Assets/Scripts/CameraMovement.cs" />
+     <Compile Include="Assets/Scripts/ItemScript.cs" />
      <Compile Include="Assets/Scripts/PortalScripts/Portal1Script.cs" />
      <Compile Include="Assets/Scripts/TrapWallScript.cs" />
+     <Compile Include="Assets/Scripts/EnemyScripts/VerticalEnemy.cs" />
      <Compile Include="Assets/Scripts/PortalScripts/Portal2Script.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Materials" />
