@@ -9,8 +9,16 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     
     
-    bool _collided = true;
+    
     private Vector3 _startPosition = new Vector3(0f, 0f, 0f);
+    
+    // variables for movement
+    private bool _collided = true;
+    
+    // variables for teleportation
+    private float _coolDownTeleport = 1f;
+    private float _nextTeleportTime = 0.5f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -69,10 +77,19 @@ public class PlayerScript : MonoBehaviour
         // display some text ...
     }
     
-    /*
-    public void PlayerTeleportation(otherPortal)
+    
+    public void PlayerTeleportation(GameObject otherPortal)
     {
+        if (_nextTeleportTime < Time.time)
+        {
+            transform.position = otherPortal.transform.position;
+            _nextTeleportTime = Time.time + _coolDownTeleport;
+        }
         
     }
-    */
+    
+    
+    // TODO: collect items to collect a flashlight
+    // TODO : activate flashlight if item is in possession 
+    
 }
