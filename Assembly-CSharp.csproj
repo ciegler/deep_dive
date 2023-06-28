@@ -46,14 +46,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets/Scripts/PlayerScript.cs" />
+     <Compile Include="Assets/Scripts/EnemyScripts/HorizontalEnemyScript.cs" />
      <Compile Include="Assets/Scripts/CameraMovement.cs" />
      <Compile Include="Assets/Scripts/PortalScripts/Portal1Script.cs" />
-     <Compile Include="Assets/Scripts/EnemyScript.cs" />
      <Compile Include="Assets/Scripts/TrapWallScript.cs" />
      <Compile Include="Assets/Scripts/PortalScripts/Portal2Script.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Materials" />
      <Folder Include="Assets/Materials/Physics" />
+     <Folder Include="Assets/Scripts/EnemyScripts" />
      <Folder Include="Assets/Prefabs" />
      <Folder Include="Assets/Scripts" />
      <Folder Include="Assets/Scripts/PortalScripts" />
