@@ -19,4 +19,12 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneNumber+1);
     }
+
+    // restarts the first game scene, when the player presses the button to do so after winning the game
+    // unpauses the time
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
 }

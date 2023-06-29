@@ -11,13 +11,13 @@ public class CameraMovement : MonoBehaviour
     
 
 
-    private float cameraSpeed = 5f; 
+    private float cameraSpeed = 7f; 
     
     private Vector3 cameraProjection; // projection of the camera to the xy-plane of the player
     
     private Vector3 newPosition; // new position of the camera, when the camera moves
     
-    private float maxDistance = 3.5f; // maximal distance between the camera projection and the player, before the camera starts moving
+    private float maxDistance = 3f; // maximal distance between the camera projection and the player, before the camera starts moving
 
     private float _jumpDistance = 10f;
 

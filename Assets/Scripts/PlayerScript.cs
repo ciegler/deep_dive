@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -22,6 +25,9 @@ public class PlayerScript : MonoBehaviour
     
     // list of collected items
     private List<GameObject> _collectedItems = new List<GameObject>();
+    
+    // text that shows if you win the game
+    [SerializeField] private TextMeshProUGUI win;
 
 
     // Start is called before the first frame update
@@ -126,4 +132,14 @@ public class PlayerScript : MonoBehaviour
     
     // TODO : activate flashlight if item is in possession 
     
+    private void OnTriggerEnter(Collider collision)
+    {
+        // triggers when player wins the game
+        // activates win screen and pauses the game
+        if (collision.tag == "win")
+        {
+            win.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 }
