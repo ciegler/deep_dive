@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     // VARIABLES
     
     [SerializeField] private Rigidbody RB;
-    private Vector3 _startPosition = new Vector3(0f, 0f, 0f);
+    [SerializeField] private Vector3 _startPosition;
     
     // variables for movement
     [SerializeField] private float _speed = 5f;
