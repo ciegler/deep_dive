@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3326860279047367207}
   - component: {fileID: 8957175684476180896}
   - component: {fileID: 6538051552382263281}
-  - component: {fileID: 7320608559853896921}
+  - component: {fileID: 5882733607891453085}
   m_Layer: 0
   m_Name: Item
   m_TagString: Flashlight
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3326860279047367207
 MeshFilter:
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7320608559853896921
+--- !u!114 &5882733607891453085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6032634005694088461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d5f8530da2489d78133eda5a79f5a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 08c1190c0b0bafd98a4ef63a9ef9cbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
