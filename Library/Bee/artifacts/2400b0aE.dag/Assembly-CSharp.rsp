@@ -356,7 +356,7 @@
 -analyzer:"/home/carolina/Unity/Hub/Editor/2022.3.3f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/CameraMovement.cs"
 "Assets/Scripts/EnemyScripts/HorizontalEnemyScript.cs"
-"Assets/Scripts/EnemyScripts/VerticalEnemy.cs"
+"Assets/Scripts/EnemyScripts/VerticalEnemyScript.cs"
 "Assets/Scripts/ItemScript.cs"
 "Assets/Scripts/PlayerScript.cs"
 "Assets/Scripts/PortalScripts/Portal1Script.cs"

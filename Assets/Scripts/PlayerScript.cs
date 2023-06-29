@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    // variables 
+    // VARIABLES
+    
     [SerializeField] private Rigidbody RB;
-    [SerializeField] private float _speed = 5f;
-    
-    
-    
     private Vector3 _startPosition = new Vector3(0f, 0f, 0f);
     
     // variables for movement
+    [SerializeField] private float _speed = 5f;
     private bool _collided = true;
-    
+    private MaterialPropertyBlock _mpb;
+    private float _colorChannel = 0.5f;
+        
     // variables for teleportation
     private float _coolDownTeleport = 1f;
     private float _nextTeleportTime = 0.5f;
@@ -29,6 +29,13 @@ public class PlayerScript : MonoBehaviour
     {
         // START POSITION
         transform.position = _startPosition;
+        
+        if (_mpb == null)
+        {
+            _mpb = new MaterialPropertyBlock();
+            _mpb.Clear();
+
+        }
     }
 
     // Update is called once per frame
@@ -42,7 +49,11 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         _collided = true;
-        
+        //change color
+        Debug.Log("collided = true");
+        _colorChannel -= 0.2f;
+        _mpb.SetColor("Color", new Color(_colorChannel, 0.5f,0.5f, 1f));
+        this.GetComponent<Renderer>().SetPropertyBlock(_mpb);
     }
 
     private void PlayerMovement()
@@ -56,7 +67,13 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _collided) {
             RB.velocity = Vector3.zero;
             _collided = false;
+            // change color
+            _colorChannel += 0.2f;
+            Debug.Log(_colorChannel);
+            _mpb.SetColor("Color",new Color(_colorChannel, _colorChannel,0.5f, 1f));
+            this.GetComponent<Renderer>().SetPropertyBlock(_mpb);
         }
+        
                 
         // if the space bar is released the player will move
         if (Input.GetKeyUp(KeyCode.Space)){
@@ -79,6 +96,7 @@ public class PlayerScript : MonoBehaviour
         
         // set movement to 0
         RB.velocity = Vector3.zero;
+        
         
         // display some text ...
     }
