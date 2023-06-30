@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class TrapWallScript : MonoBehaviour
 {
-    // if colliding with a TrapWall the Player dies
-
-
+    // when colliding with a TrapWall the Player dies
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

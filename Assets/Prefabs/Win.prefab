@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8193325940041653573}
   - component: {fileID: 6099239261947453934}
   - component: {fileID: 3707147108776193363}
+  - component: {fileID: 4607564286856558508}
   m_Layer: 0
   m_Name: Win
   m_TagString: win
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8193325940041653573
 MeshFilter:
@@ -105,3 +106,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4607564286856558508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849398325892525295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f257b622c0bda15068ac5d5495934b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winText: {fileID: 0}
+  player: {fileID: 0}
+  win: {fileID: 0}

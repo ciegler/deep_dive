@@ -1,43 +1,52 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class LightItemScript : MonoBehaviour
 {
+    /*
+     * In level 3 the only light is the LightItem which can be collected by the player and then
+     * follows the player through the level.
+     */
     
-    [SerializeField] private GameObject player;
+    // Variables
+    [SerializeField] [CanBeNull] private GameObject _player;
     [SerializeField] private Vector3 _startPosition;
+    
     private bool _collected = false;
 
+    // Functions
     private void Start()
     {
         Spawn();
     }
-
-
-    // LATEUPDATE - is called at the end of the frame 
+    
+    // using LateUpdate to make game faster
     void LateUpdate()
     {
-        // NULL CHECK  
-        if(player != null && _collected)
+        // null check and collected check, so that the light follows the player only if it was collected
+        if(_player != null && _collected)
         {
-            Debug.Log("light collected");
-            // ADD OFFSET - to our position in order to depict the player properly
-            Vector3 newPosition = player.transform.position;
+            // let the light follow the player
+            Vector3 newPosition = _player.transform.position;
             transform.position = newPosition; 
         }
     }
+    
+    
     private void OnTriggerEnter(Collider other)
     {
+        // set _collided to true when the player collides with the light
         if (other.CompareTag("Player"))
         {
             _collected = true;
-
         }
     }
 
+    // Spawn() for the start of the level but also for respawning after the player died 
     public void Spawn()
     {
         transform.position = _startPosition;

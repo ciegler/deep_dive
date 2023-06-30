@@ -6,17 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    /*
+     * SceneChanger to get to the next level
+     */
+    
+    // Variables
     private int _sceneNumber;
+    
+    // Functions
     void Start()
     {
-    _sceneNumber = SceneManager.GetActiveScene().buildIndex;
-    Debug.Log(_sceneNumber);
+        _sceneNumber = SceneManager.GetActiveScene().buildIndex;
     }
-  
-
-    // switch to next level
+    
     private void OnTriggerEnter(Collider other)
     {
+        // switch to the next level if player collides with this
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene(_sceneNumber+1);
@@ -25,10 +30,12 @@ public class SceneChanger : MonoBehaviour
         
     }
 
-    // restarts the first game scene, when the player presses the button to do so after winning the game
-    // unpauses the time
+    
     public void Restart()
     {
+        // after winning the game:
+        // restarts the first game scene, when the player presses the button to do so
+        // unpauses the time
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
