@@ -8,9 +8,13 @@ public class LightItemScript : MonoBehaviour
 {
     
     [SerializeField] private GameObject player;
+    [SerializeField] private Vector3 _startPosition;
     private bool _collected = false;
 
-
+    private void Start()
+    {
+        Spawn();
+    }
 
 
     // LATEUPDATE - is called at the end of the frame 
@@ -32,5 +36,10 @@ public class LightItemScript : MonoBehaviour
             _collected = true;
 
         }
+    }
+
+    public void Spawn()
+    {
+        transform.position = _startPosition;
     }
 }

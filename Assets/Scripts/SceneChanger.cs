@@ -17,7 +17,12 @@ public class SceneChanger : MonoBehaviour
     // switch to next level
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(_sceneNumber+1);
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(_sceneNumber+1);
+            other.GetComponent<PlayerScript>().SaveItems();
+        }
+        
     }
 
     // restarts the first game scene, when the player presses the button to do so after winning the game

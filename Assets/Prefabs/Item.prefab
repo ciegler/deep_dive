@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5882733607891453085}
   m_Layer: 0
   m_Name: Item
-  m_TagString: Flashlight
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c1190c0b0bafd98a4ef63a9ef9cbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPosition: {x: 0, y: 0, z: 0}

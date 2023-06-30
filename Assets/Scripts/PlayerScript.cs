@@ -5,28 +5,33 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerScript : MonoBehaviour
 {
     // VARIABLES
-    
+
     [SerializeField] private Rigidbody RB;
     [SerializeField] private Vector3 _startPosition;
-    
+
     // variables for movement
     [SerializeField] private float _speed = 5f;
     private bool _collided = true;
-    private MaterialPropertyBlock _mpb;
-    private float _colorChannel = 0.5f;
-        
+ 
     // variables for teleportation
     private float _coolDownTeleport = 1f;
     private float _nextTeleportTime = 0.5f;
+
+    // lists for collection of items
+    private List<GameObject> _collectedItemsTotal = new List<GameObject>();
+    private List<GameObject> _collectedItemsCurrentScene = new List<GameObject>();
+
+    // for respawning objects after death
+    private GameObject[] _enemyRespawns;
+    private GameObject[] _itemRespawns;
+    private GameObject[] _lightRespawns;
     
-    // list of collected items
-    private List<GameObject> _collectedItems = new List<GameObject>();
-    
-    // text that shows if you win the game
+// text that shows if you win the game
     [SerializeField] private TextMeshProUGUI win;
 
 
@@ -35,31 +40,18 @@ public class PlayerScript : MonoBehaviour
     {
         // START POSITION
         transform.position = _startPosition;
-        
-        if (_mpb == null)
-        {
-            _mpb = new MaterialPropertyBlock();
-            _mpb.Clear();
-
-        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement();
-        
-        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         _collided = true;
-        //change color
-        Debug.Log("collided = true");
-        _colorChannel -= 0.2f;
-        _mpb.SetColor("Color", new Color(_colorChannel, 0.5f,0.5f, 1f));
-        this.GetComponent<Renderer>().SetPropertyBlock(_mpb);
     }
 
     private void PlayerMovement()
@@ -73,11 +65,6 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _collided) {
             RB.velocity = Vector3.zero;
             _collided = false;
-            // change color
-            _colorChannel += 0.2f;
-            Debug.Log(_colorChannel);
-            _mpb.SetColor("Color",new Color(_colorChannel, _colorChannel,0.5f, 1f));
-            this.GetComponent<Renderer>().SetPropertyBlock(_mpb);
         }
         
                 
@@ -91,20 +78,21 @@ public class PlayerScript : MonoBehaviour
                 Vector3.zero : RB.velocity.normalized) * _speed;
         }
         
-        // TODO change color when collided 
     }
 
     public void PlayerDeath()
     {
-        Debug.Log("Death");
         // transport back to start position
         transform.position = _startPosition;
         
         // set movement to 0
         RB.velocity = Vector3.zero;
         
+        // respawn enemies and items
+        RespawnObjects();
         
-        // display some text ...
+        // delete all collected items from this level
+        _collectedItemsCurrentScene.Clear();
     }
     
     
@@ -120,17 +108,19 @@ public class PlayerScript : MonoBehaviour
 
     public void CollectItem(GameObject item)
     {
-        _collectedItems.Add(item);
-        Debug.Log(_collectedItems[0].tag);
+        _collectedItemsCurrentScene.Add(item);
     }
 
-    private void TurnOnFlashlight()
+    public void SaveItems()
     {
-        // in der liste nach flashligh suchen
+       
+        _collectedItemsTotal.AddRange(_collectedItemsCurrentScene);
+        Debug.Log("items saved");
+        Debug.Log(_collectedItemsTotal[0]);
+            
         
     }
     
-    // TODO : activate flashlight if item is in possession 
     
     private void OnTriggerEnter(Collider collision)
     {
@@ -140,6 +130,52 @@ public class PlayerScript : MonoBehaviour
         {
             win.gameObject.SetActive(true);
             Time.timeScale = 0;
+        }
+    }
+
+    private void RespawnObjects()
+    {
+        RespawnEnemies();
+        RespawnItems();
+        RespawnLight();
+    }
+    private void RespawnEnemies()
+    {
+        if (_enemyRespawns == null)
+        {
+            _enemyRespawns = GameObject.FindGameObjectsWithTag("Enemy");
+        }
+        
+
+        foreach (GameObject enemy in _enemyRespawns)
+        {
+            enemy.GetComponent<EnemyScript>().Spawn();
+        }
+    }
+    private void RespawnItems()
+    {
+        if (_itemRespawns == null)
+        {
+            _itemRespawns = GameObject.FindGameObjectsWithTag("Item");
+        }
+        
+
+        foreach (GameObject item in _itemRespawns)
+        {
+           item.GetComponent<ItemScript>().Spawn();
+        }
+    }
+    private void RespawnLight()
+    {
+        if (_lightRespawns == null)
+        {
+            _lightRespawns = GameObject.FindGameObjectsWithTag("Light");
+        }
+        
+
+        foreach (GameObject light in _lightRespawns)
+        {
+            light.GetComponent<LightItemScript>().Spawn();
         }
     }
 }
