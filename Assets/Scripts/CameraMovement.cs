@@ -5,29 +5,22 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    // VARIABLES
     [SerializeField] private Transform target;
-    
-    public Vector3 offset; // offset from the player position, so that the camera is not in the same xy-plane as the player and can therefore show the player
-    
-
-
-    private float cameraSpeed = 7f; 
-    
+    private Vector3 _offset; 
+    private float cameraSpeed = 7f;
     private Vector3 cameraProjection; // projection of the camera to the xy-plane of the player
-    
     private Vector3 newPosition; // new position of the camera, when the camera moves
-    
     private float maxDistance = 3f; // maximal distance between the camera projection and the player, before the camera starts moving
-
     private float _jumpDistance = 10f;
 
     //private Vector3 _yOffset = new Vector3(0f,3f,0f);
 
     void Start()
     {
-        offset = transform.position - target.transform.position;// - _yOffset;
+        _offset = transform.position - target.transform.position;// - _yOffset;
         cameraProjection = target.position;
-        newPosition = target.transform.position + offset;
+        newPosition = target.transform.position + _offset;
     }
 
     // LATEUPDATE - is called at the end of the frame 
@@ -39,7 +32,7 @@ public class CameraMovement : MonoBehaviour
         if (target != null && ((target.position - cameraProjection).magnitude > _jumpDistance))
         {
             cameraProjection = target.position;
-            newPosition = cameraProjection + offset;
+            newPosition = cameraProjection + _offset;
             transform.position = newPosition;
         }
         // calculate distance
@@ -52,7 +45,7 @@ public class CameraMovement : MonoBehaviour
             // moves playerPosition to the position of player, with cameraSpeed
             cameraProjection = Vector3.MoveTowards(cameraProjection, target.position, Time.deltaTime * cameraSpeed);
             // ADD OFFSET - to our position in order to depict the player properly
-            newPosition = cameraProjection + offset;
+            newPosition = cameraProjection + _offset;
             // set the position of the camera to newPosition
             transform.position = newPosition; 
 

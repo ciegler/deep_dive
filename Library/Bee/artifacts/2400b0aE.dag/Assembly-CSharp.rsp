@@ -364,6 +364,7 @@
 "Assets/Scripts/SceneChanger.cs"
 "Assets/Scripts/TrapWallScript.cs"
 "Assets/Scripts/TutorialTextScript.cs"
+"Assets/Scripts/WinText.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"

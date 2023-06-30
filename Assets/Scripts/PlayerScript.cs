@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     private float _nextTeleportTime = 0.5f;
 
     // lists for collection of items
-    private List<GameObject> _collectedItemsTotal = new List<GameObject>();
+    public List<GameObject> _collectedItemsTotal = new List<GameObject>();
     private List<GameObject> _collectedItemsCurrentScene = new List<GameObject>();
 
     // for respawning objects after death
@@ -32,7 +32,8 @@ public class PlayerScript : MonoBehaviour
     private GameObject[] _lightRespawns;
     
 // text that shows if you win the game
-    [SerializeField] private TextMeshProUGUI win;
+    [SerializeField] public TextMeshProUGUI win;
+    [SerializeField] private WinText _winText;
 
 
     // Start is called before the first frame update
@@ -131,6 +132,7 @@ public class PlayerScript : MonoBehaviour
         // activates win screen and pauses the game
         if (collider.CompareTag("win"))
         {
+            _winText.ItemCount();
             win.gameObject.SetActive(true);
             Time.timeScale = 0;
         }
