@@ -113,20 +113,23 @@ public class PlayerScript : MonoBehaviour
 
     public void SaveItems()
     {
-       
-        _collectedItemsTotal.AddRange(_collectedItemsCurrentScene);
-        Debug.Log("items saved");
-        Debug.Log(_collectedItemsTotal[0]);
+
+        if (_collectedItemsCurrentScene.Count != 0)
+        {
+           _collectedItemsTotal.AddRange(_collectedItemsCurrentScene);
+        }
+            
+        
             
         
     }
     
     
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider collider)
     {
         // triggers when player wins the game
         // activates win screen and pauses the game
-        if (collision.tag == "win")
+        if (collider.CompareTag("win"))
         {
             win.gameObject.SetActive(true);
             Time.timeScale = 0;

@@ -69,6 +69,7 @@
      <Compile Include="Assets/Scripts/PortalScripts/Portal1Script.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_DigitValidator.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets/Scripts/TutorialTextScript.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextConsoleSimulator.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TeleType.cs" />
      <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventCheck.cs" />
@@ -110,7 +111,6 @@
      <Folder Include="Assets/externalAssets/CasualFantasy/_Demo/Mat" />
      <Folder Include="Assets/externalAssets/PBS Materials Variety Pack/Glass/Textures/Hex Lattice/hexagonal lattice_Textures/07" />
      <Folder Include="Assets/externalAssets/CasualFantasy/_Demo/Anim" />
-     <Folder Include="Assets/Scripts/EnemyScripts" />
      <Folder Include="Assets/externalAssets" />
      <Folder Include="Assets/externalAssets/amusedART/StoneMonster/Animations" />
      <Folder Include="Assets/externalAssets/PBS Materials Variety Pack/Dirt/Textures" />

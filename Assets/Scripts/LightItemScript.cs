@@ -41,5 +41,6 @@ public class LightItemScript : MonoBehaviour
     public void Spawn()
     {
         transform.position = _startPosition;
+        _collected = false;
     }
 }
