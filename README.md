@@ -25,6 +25,12 @@ The player is a litte stone monster who has to find its ways through different c
 - scene/level changing on collision with gameobject
 - light item that lightens up its environment and can be collected by the player so that the player lightens up their environment
 
+## issues we faced:
+- finding good assets in the asset store
+- in general the coding and using of the unity engine was challenging, especially tricky was:
+  - using empty ojects as parents, whithout changing the position of the child objects
+  - using the light object in level 3
+  - figure out which objects needed scripts and which variables needed to be public
 
 
 
