@@ -1,4 +1,6 @@
 # deep_dive
+### we are using the unity version 2022.3.3f1
+This was the version recommended by unity hub. The old version was not working with linux, there we had major problems connecting a IDE with the unity engine and googeling and reading through a lot of forums revealed that this was a problem of unity and linux.
 
 ## idea:
 The player is a litte stone monster who has to find its ways through different caves. By that it has to be careful not to hit the spiders and the trapwalls. Furthermore it can collect fancy looking items and when it is dark a light to carry with.
