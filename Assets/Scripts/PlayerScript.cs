@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class PlayerScript : MonoBehaviour
 {
     // VARIABLES
-
+    
     [SerializeField] private Rigidbody RB;
     [SerializeField] private Vector3 _startPosition;
 
@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject[] _itemRespawns;
     private GameObject[] _lightRespawns;
     
-// text that shows if you win the game
+    // text that shows if you win the game
     [SerializeField] public TextMeshProUGUI win;
     [SerializeField] private WinText _winText;
 
